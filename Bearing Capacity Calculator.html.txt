@@ -3,20 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bearing Capacity Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Geo-checks - Bearing Capacity Calculator</title>
 </head>
 <body>
-    <div>
-        <a href="index.html">Back to Main Page</a> |
-        <a href="bearing-capacity.html">Bearing Capacity</a> |
-        <a href="slope-stability.html">Slope Stability</a> |
-        <a href="pile-length.html">Pile Length</a> |
-        <a href="retaining-wall.html">Retaining Wall</a> |
-        <a href="cofferdam-design.html">Cofferdam Design</a> |
-        <a href="ground-anchors.html">Ground Anchor</a>
-    </div>
-    
+    <header>
+        Geo-checks
+    </header>
     <h1>Bearing Capacity Calculator</h1>
     <form>
         <label>Cohesion (c') [kPa]: <input type="number" id="cohesion" required></label><br>

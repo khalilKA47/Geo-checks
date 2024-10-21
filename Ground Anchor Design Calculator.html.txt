@@ -3,35 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ground Anchor Design Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Geo-checks - Ground Anchor Design Calculator</title>
 </head>
 <body>
-    <div>
-        <a href="index.html">Back to Main Page</a> |
-        <a href="bearing-capacity.html">Bearing Capacity</a> |
-        <a href="slope-stability.html">Slope Stability</a> |
-        <a href="pile-length.html">Pile Length</a> |
-        <a href="retaining-wall.html">Retaining Wall</a> |
-        <a href="cofferdam-design.html">Cofferdam Design</a> |
-        <a href="ground-anchors.html">Ground Anchor</a>
-    </div>
-
+    <header>
+        Geo-checks
+    </header>
     <h1>Ground Anchor Design Calculator</h1>
     <form>
-        <label>Structural Load (W) [kN]: <input type="number" id="W" required></label><br>
-        <label>Uplift Pressure (U) [kN]: <input type="number" id="U" required></label><br>
-        <button type="button" onclick="calculateAnchorForce()">Calculate</button>
+        <label>Design Load (Q) [kN]: <input type="number" id="Q" required></label><br>
+        <label>Anchor Length (L) [m]: <input type="number" id="L" required></label><br>
+        <label>Soil Unit Weight (γ) [kN/m³]: <input type="number" id="gamma" required></label><br>
+        <button type="button" onclick="calculateGroundAnchor()">Calculate</button>
     </form>
     <p id="result"></p>
 
     <script>
-        function calculateAnchorForce() {
-            const W = parseFloat(document.getElementById('W').value);
-            const U = parseFloat(document.getElementById('U').value);
+        function calculateGroundAnchor() {
+            const Q = parseFloat(document.getElementById('Q').value);
+            const L = parseFloat(document.getElementById('L').value);
+            const gamma = parseFloat(document.getElementById('gamma').value);
 
-            const Fa = W + U;
-            document.getElementById('result').innerText = `Required Anchor Force: ${Fa.toFixed(2)} kN`;
+            const anchorForce = Q / (gamma * L);
+            document.getElementById('result').innerText = `Required Anchor Force: ${anchorForce.toFixed(2)} kN`;
         }
     </script>
 </body>

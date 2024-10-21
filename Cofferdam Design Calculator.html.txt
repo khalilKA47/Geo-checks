@@ -3,34 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cofferdam Design Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Geo-checks - Cofferdam Design Calculator</title>
 </head>
 <body>
-    <div>
-        <a href="index.html">Back to Main Page</a> |
-        <a href="bearing-capacity.html">Bearing Capacity</a> |
-        <a href="slope-stability.html">Slope Stability</a> |
-        <a href="pile-length.html">Pile Length</a> |
-        <a href="retaining-wall.html">Retaining Wall</a> |
-        <a href="cofferdam-design.html">Cofferdam Design</a> |
-        <a href="ground-anchors.html">Ground Anchor</a>
-    </div>
-    
+    <header>
+        Geo-checks
+    </header>
     <h1>Cofferdam Design Calculator</h1>
     <form>
-        <label>Water Height (h) [m]: <input type="number" id="height" required></label><br>
+        <label>Water Depth (h) [m]: <input type="number" id="h" required></label><br>
+        <label>Water Unit Weight (γ) [kN/m³]: <input type="number" id="gamma" required></label><br>
         <button type="button" onclick="calculateCofferdam()">Calculate</button>
     </form>
     <p id="result"></p>
 
     <script>
         function calculateCofferdam() {
-            const h = parseFloat(document.getElementById('height').value);
-            const gamma_w = 9.81; // kN/m³
-            const Pw = gamma_w * h;
+            const h = parseFloat(document.getElementById('h').value);
+            const gamma = parseFloat(document.getElementById('gamma').value);
 
-            document.getElementById('result').innerText = `Water Pressure: ${Pw.toFixed(2)} kPa`;
+            const pressure = gamma * h;
+            document.getElementById('result').innerText = `Water Pressure: ${pressure.toFixed(2)} kPa`;
         }
     </script>
 </body>

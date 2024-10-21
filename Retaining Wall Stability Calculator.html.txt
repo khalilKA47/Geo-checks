@@ -3,37 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retaining Wall Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Geo-checks - Retaining Wall Calculator</title>
 </head>
 <body>
-    <div>
-        <a href="index.html">Back to Main Page</a> |
-        <a href="bearing-capacity.html">Bearing Capacity</a> |
-        <a href="slope-stability.html">Slope Stability</a> |
-        <a href="pile-length.html">Pile Length</a> |
-        <a href="retaining-wall.html">Retaining Wall</a> |
-        <a href="cofferdam-design.html">Cofferdam Design</a> |
-        <a href="ground-anchors.html">Ground Anchor</a>
-    </div>
-
+    <header>
+        Geo-checks
+    </header>
     <h1>Retaining Wall Calculator</h1>
     <form>
-        <label>Wall Height (H) [m]: <input type="number" id="height" required></label><br>
+        <label>Wall Height (H) [m]: <input type="number" id="H" required></label><br>
         <label>Soil Unit Weight (γ) [kN/m³]: <input type="number" id="gamma" required></label><br>
-        <label>Friction Angle (ϕ) [degrees]: <input type="number" id="phi" required></label><br>
+        <label>Angle of Internal Friction (φ) [degrees]: <input type="number" id="phi" required></label><br>
         <button type="button" onclick="calculateRetainingWall()">Calculate</button>
     </form>
     <p id="result"></p>
 
     <script>
         function calculateRetainingWall() {
-            const H = parseFloat(document.getElementById('height').value);
+            const H = parseFloat(document.getElementById('H').value);
             const gamma = parseFloat(document.getElementById('gamma').value);
-            const phi = parseFloat(document.getElementById('phi').value);
-            const K = Math.tan((45 + (phi / 2)) * (Math.PI / 180));
-            const P = 0.5 * gamma * H * H * K;
+            const phi = parseFloat(document.getElementById('phi').value) * (Math.PI / 180);
 
+            const K = Math.tan(Math.PI / 4 + phi / 2);
+            const P = 0.5 * gamma * H * H * K;
             document.getElementById('result').innerText = `Lateral Earth Pressure: ${P.toFixed(2)} kN/m`;
         }
     </script>
