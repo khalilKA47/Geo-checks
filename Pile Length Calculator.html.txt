@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pile Length Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div>
+        <a href="index.html">Back to Main Page</a> |
+        <a href="bearing-capacity.html">Bearing Capacity</a> |
+        <a href="slope-stability.html">Slope Stability</a> |
+        <a href="pile-length.html">Pile Length</a> |
+        <a href="retaining-wall.html">Retaining Wall</a> |
+        <a href="cofferdam-design.html">Cofferdam Design</a> |
+        <a href="ground-anchors.html">Ground Anchor</a>
+    </div>
+
+    <h1>Pile Length Calculator</h1>
+    <form>
+        <label>Ultimate Load (Q) [kN]: <input type="number" id="Q" required></label><br>
+        <label>Soil Bearing Capacity (q) [kN/m²]: <input type="number" id="q" required></label><br>
+        <button type="button" onclick="calculatePileLength()">Calculate</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function calculatePileLength() {
+            const Q = parseFloat(document.getElementById('Q').value);
+            const q = parseFloat(document.getElementById('q').value);
+
+            const L = Q / q;
+            document.getElementById('result').innerText = `Required Pile Length: ${L.toFixed(2)} m`;
+        }
+    </script>
+</body>
+</html>
